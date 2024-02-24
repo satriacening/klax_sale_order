@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_saleorder_document_inherit_klax" inherit_id="sale.report_saleorder_document">
+    <xpath expr="//th[@name='th_description']" position="after">
+        <th name="th_image" class="text-end">Image hehehe</th>
+    </xpath>
+    <xpath expr="//td[@name='td_name']" position="after">
+        <td name="td_image">
+            <div t-if="line.image">
+                    <img t-att-src="image_data_uri(line.image)" style="max-height:85pt;max-width:90%" alt="Employee Image"/>
+            </div>
+            <div t-if="not line.image">
+                <p>No Image Available</p>
+            </div>
+        </td>
+    </xpath>
+</template>
+</odoo>

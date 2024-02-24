@@ -10,6 +10,7 @@
     'depends': ['product', 'sale'],
     'data': [
         'views/sale_order.xml',
+        'report/ir_actions_report_templates.xml',
     ],
     'installable': True,
     'application': True,
