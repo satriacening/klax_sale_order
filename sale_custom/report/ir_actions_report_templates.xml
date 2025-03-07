@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<template id="document_tax_totals_template_inherit" inherit_id="account.document_tax_totals_template">
+    <xpath expr="//td/strong[text()='Untaxed Amount']" position="replace">
+        <strong>Subtotal</strong>
+    </xpath>
+</template>
+
 <template id="report_saleorder_document_inherit_klax" inherit_id="sale.report_saleorder_document">
     <xpath expr="//th[@name='th_description']" position="after">
         <th name="th_image" class="text-end">Image</th>
@@ -14,5 +20,25 @@
             </div>
         </td>
     </xpath>
+
+    <xpath expr="//th[@name='th_taxes']" position="attributes">
+        <attribute name="style">display: none;</attribute>
+    </xpath>
+    <xpath expr="//td[@name='td_taxes']" position="attributes">
+        <attribute name="style">display: none;</attribute>
+    </xpath>
+
+    <xpath expr="//table//td[@name='td_subtotal']" position="replace">
+        <td t-if="not line.is_downpayment" name="td_subtotal" class="text-end o_price_total">
+            <span t-field="line.price_subtotal_formatted"/>
+        </td>
+    </xpath>
+
+    <xpath expr="//table//td[@name='td_priceunit']" position="replace">
+        <td name="td_priceunit" class="text-end">
+            <span t-field="line.price_unit_formatted">3</span>
+        </td>
+    </xpath>
+
 </template>
 </odoo>
