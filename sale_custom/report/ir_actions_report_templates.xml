@@ -2,11 +2,31 @@
 <odoo>
 <template id="document_tax_totals_template_inherit" inherit_id="account.document_tax_totals_template">
     <xpath expr="//td/strong[text()='Untaxed Amount']" position="replace">
-        <strong>Subtotal</strong>
+        <strong>Total Amount</strong>
     </xpath>
+
+
+     <xpath expr="//tr[@class='border-black o_total']/td/strong[text()='Total']" position="replace">
+        <strong>Grand Total</strong>
+     </xpath>
 </template>
 
 <template id="report_saleorder_document_inherit_klax" inherit_id="sale.report_saleorder_document">
+
+    <xpath expr="//thead//th[@name='th_subtotal']" position="before">
+        <th name="th_after_discount" class="text-end">
+            <span>After Discount</span>
+        </th>
+    </xpath>
+
+    <xpath expr="//tbody//td[@name='td_subtotal']" position="before">
+        <td name="td_after_discount" class="text-end">
+            <span t-esc="line.price_after_disc"/>
+        </td>
+    </xpath>
+
+    <xpath expr="//td[@name='td_quantity']//span[@t-field='line.product_uom']" position="replace"/>
+
     <xpath expr="//th[@name='th_description']" position="after">
         <th name="th_image" class="text-end">Image</th>
     </xpath>
@@ -39,6 +59,13 @@
             <span t-field="line.price_unit_formatted">3</span>
         </td>
     </xpath>
-
+    <xpath expr="//table//td[@name='td_priceunit']" position="replace">
+        <td name="td_priceunit" class="text-end">
+            <span t-field="line.price_unit_formatted">3</span>
+        </td>
+    </xpath>
+    <xpath expr="//span[@t-field='line.product_uom_qty']" position="replace">
+        <span t-field="line.product_uom_qty_formatted"/>
+    </xpath>
 </template>
 </odoo>

@@ -25,6 +25,7 @@ class SaleOrderLine(models.Model):
                         line['formatted_tax_group_amount'])
                     line['formatted_tax_group_base_amount'] = self.remove_decimal_from_string(
                         line['formatted_tax_group_base_amount'])
+                    line['tax_group_name'] = '(PPn 11%)'
             for subtotal in order.tax_totals.get('subtotals', []):
                 subtotal['formatted_amount'] = self.remove_decimal_from_string(subtotal['formatted_amount'])
 
