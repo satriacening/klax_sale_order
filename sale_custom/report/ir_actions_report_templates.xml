@@ -27,13 +27,17 @@
 
     <xpath expr="//td[@name='td_quantity']//span[@t-field='line.product_uom']" position="replace"/>
 
+    <xpath expr="//th[@name='th_description']" position="attributes">
+         <attribute name="style">width: 25%;</attribute>
+    </xpath>
+
     <xpath expr="//th[@name='th_description']" position="after">
-        <th name="th_image" class="text-end">Image</th>
+        <th name="th_image" style="width: 25%;" class="text-end">Image</th>
     </xpath>
     <xpath expr="//td[@name='td_name']" position="after">
-        <td name="td_image">
+         <td name="td_image" style="width: 25%;"> <!-- Menetapkan lebar tetap untuk Image -->
             <div t-if="line.image">
-                    <img t-att-src="image_data_uri(line.image)" style="max-height:85pt;max-width:90%" alt="Employee Image"/>
+                <img t-att-src="image_data_uri(line.image)" style="max-height:85pt;max-width:90%" alt="Employee Image"/>
             </div>
             <div t-if="not line.image">
                 <p>No Image Available</p>
