@@ -27,20 +27,20 @@
 
     <xpath expr="//td[@name='td_quantity']//span[@t-field='line.product_uom']" position="replace"/>
 
-    <xpath expr="//th[@name='th_quantity']" position="attributes">
-        <attribute name="style">width: 8%;</attribute>
+    <xpath expr="//td[@name='td_quantity']" position="attributes">
+        <attribute name="style">width: 5%; text-align: center;</attribute>
     </xpath>
 
-    <xpath expr="//td[@name='td_quantity']" position="attributes">
-        <attribute name="style">width: 8%; text-align: center;</attribute>
+    <xpath expr="//th[@name='th_quantity']" position="replace">
+        <th name="th_quantity" style="width: 5%; text-align: center;">Qty</th>
     </xpath>
 
     <xpath expr="//th[@name='th_description']" position="attributes">
-         <attribute name="style">width: 25%;</attribute>
+         <attribute name="style">width: 30%;</attribute>
     </xpath>
 
     <xpath expr="//th[@name='th_description']" position="after">
-        <th name="th_image" style="width: 25%;" class="text-center">Image</th>
+        <th name="th_image" style="width: 20%;" class="text-center">Image</th>
     </xpath>
 
     <xpath expr="//td[@name='td_name']" position="after">
