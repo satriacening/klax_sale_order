@@ -27,6 +27,14 @@
 
     <xpath expr="//td[@name='td_quantity']//span[@t-field='line.product_uom']" position="replace"/>
 
+    <xpath expr="//th[@name='th_quantity']" position="attributes">
+        <attribute name="style">width: 8%;</attribute>
+    </xpath>
+
+    <xpath expr="//td[@name='td_quantity']" position="attributes">
+        <attribute name="style">width: 8%; text-align: center;</attribute>
+    </xpath>
+
     <xpath expr="//th[@name='th_description']" position="attributes">
          <attribute name="style">width: 25%;</attribute>
     </xpath>
@@ -36,10 +44,11 @@
     </xpath>
 
     <xpath expr="//td[@name='td_name']" position="after">
-        <td name="td_image" style="width: 25%; text-align: center;">
+        <td name="td_image" style="width: 85pt; text-align: center;">
             <div t-if="line.image" style="display: flex; justify-content: center; align-items: center;">
                 <img t-att-src="image_data_uri(line.image)"
-                     style="max-width: 100%; height: auto; max-height: 85pt; width: 100%;" alt="Employee Image"/>
+                     style="max-width: 85pt; max-height: 85pt; height: auto; width: auto; object-fit: contain;"
+                     alt="Product Image"/>
             </div>
             <div t-if="not line.image">
                 <p>No Image Available</p>
